@@ -28,21 +28,36 @@ export default function JobList() {
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-1/4 p-4">
         <h2 className="font-inter font-bold text-lg mb-4">Job Types</h2>
-        {jobTypes.map((jobType) => (
-          <div key={jobType} className="mb-2">
-            <label className="font-inter font-normal text-sm">
-              <input
-                type="radio"
-                name="jobType"
-                value={jobType}
-                checked={selectedJobType === jobType}
-                onChange={() => setSelectedJobType(jobType)}
-                className="mr-2"
-              />
-              {jobType}
-            </label>
-          </div>
-        ))}
+        <div className="md:hidden">
+          <select
+            value={selectedJobType}
+            onChange={(e) => setSelectedJobType(e.target.value)}
+            className="w-full p-2 border rounded"
+          >
+            {jobTypes.map((jobType) => (
+              <option key={jobType} value={jobType}>
+                {jobType}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="hidden md:block">
+          {jobTypes.map((jobType) => (
+            <div key={jobType} className="mb-2">
+              <label className="font-inter font-normal text-sm">
+                <input
+                  type="radio"
+                  name="jobType"
+                  value={jobType}
+                  checked={selectedJobType === jobType}
+                  onChange={() => setSelectedJobType(jobType)}
+                  className="mr-2"
+                />
+                {jobType}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="w-full md:w-3/4 p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
