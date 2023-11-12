@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <div className="font-inter">
       <Header />
-      <JobList />
+      <main className="p-4">
+        <JobList />
+      </main>
     </div>
   );
 }
